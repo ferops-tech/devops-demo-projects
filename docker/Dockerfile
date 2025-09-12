@@ -2,11 +2,18 @@
 
 FROM python:3.8-slim-buster
 
-WORKDIR /python-docker
+WORKDIR /app
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+COPY /app .
 
-COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+# Environment variables for Flask CLI
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_PORT=5000
+ENV FLASK_ENV=development
+
+EXPOSE 5000
+
+CMD ["python3", "-m", "flask", "run"]

@@ -1,9 +1,23 @@
+# 💻 DevOps Demo Project
 
-# DevOps Demo Project
-
-This repository is a **hands-on DevOps demo project** showcasing infrastructure, deployment,
-and application management practices. It includes a simple Python Flask application, Docker containerization,
-Terraform infrastructure, and monitoring setup. It is designed as a **reference implementation** for deploying 
-and managing services in a production-like environment.
+A hands-on DevOps demo project showcasing containerization, infrastructure-as-code, and monitoring.  
+Includes a Python app, Docker setup, Terraform scripts, and Prometheus/Grafana monitoring.
 
 ---
+
+## Quick Start
+
+Clone the repository and run the app:
+
+```shell
+git clone https://github.com/feropstech/devops-demo-projects.git
+cd devops-demo-projects
+docker build -f docker/Dockerfile -t flask-app .
+docker run -ti -p 8080:5000 flask-app
+```
+
+Open [http://localhost:8080](http://localhost:8080) in your browser to see the app.
+
+---
+
+For full deployment instructions, see **[Deployment Guide](docs/deployment_guide.md)**.
