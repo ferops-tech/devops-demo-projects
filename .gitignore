@@ -1,2 +1,10 @@
 .idea
 .DS_Store
+
+# terraform
+terraform/.terraform/
+terraform/terraform.tfstate*
+terraform/.terraform.lock*
+terraform/provider.tf2
+# key
+terraform/.ssh-terraform/keypair-test.pub

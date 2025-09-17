@@ -18,6 +18,14 @@ docker run -ti -p 8080:5000 flask-app
 
 Open [http://localhost:8080](http://localhost:8080) in your browser to see the app.
 
+**Docker Hub link**: [feropstech/flask-app](https://hub.docker.com/r/feropstech/flask-app)
+
 ---
 
 For full deployment instructions, see **[Deployment Guide](docs/deployment_guide.md)**.
+
+
+
+
+
+
