@@ -1,6 +1,6 @@
 resource "aws_route_table" "route_table_a" {
-  vpc_id = aws_vpc.my_vpc.id
-  tags   = var.route_table_tags
+  vpc_id     = aws_vpc.my_vpc.id
+  tags       = var.route_table_tags
   depends_on = [aws_internet_gateway.my_igw]
 }
 

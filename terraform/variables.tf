@@ -31,7 +31,7 @@ variable "instance_type" {
 variable "ami_id" {
   description = "AMI ID for the EC2 instance"
   type        = string
-  default     = "ami-09621783a4144ea60"
+  default     = "ami-01324cca1b7747b52"
 }
 
 variable "private_ip" {
@@ -67,7 +67,7 @@ variable "route_table_tags" {
 variable "instance_tags" {
   description = "Tags for the EC2 instance"
   type        = map(string)
-  default     = {
+  default = {
     Name        = "my-server-test"
     Description = "A basic instance for testing purpose"
   }
@@ -76,11 +76,11 @@ variable "instance_tags" {
 variable "security_group_name" {
   description = "Name for the security group"
   type        = string
-  default     = "ssh-access"
+  default     = "accesses-to-ec2"
 }
 
 variable "security_group_description" {
   description = "Description for the security group"
   type        = string
-  default     = "Allows SSH access to machines on the Internet"
+  default     = "Allows accesses to internal machines from the Internet"
 }
