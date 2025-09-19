@@ -1,15 +1,15 @@
 # 💻 DevOps Demo Project
 
-A hands-on DevOps demo project showcasing containerization, infrastructure-as-code, and monitoring.  
-Includes a Python app, Docker setup, Terraform scripts, and Prometheus/Grafana monitoring.
+A hands-on **DevOps portfolio project** demonstrating **end-to-end infrastructure, deployment, and monitoring skills**.  
+This project showcases practical abilities with **containerization, infrastructure-as-code, and observability**, in a clear, reproducible format.
 
 ---
 
-## Quick Start
+## Quick Start (Local)
 
-Clone the repository and run the app:
+Clone the repository and run the app locally:
 
-```shell
+```bash
 git clone https://github.com/feropstech/devops-demo-projects.git
 cd devops-demo-projects
 docker build -f docker/Dockerfile -t flask-app .
@@ -20,12 +20,27 @@ Open [http://localhost:8080](http://localhost:8080) in your browser to see the a
 
 **Docker Hub link**: [feropstech/flask-app](https://hub.docker.com/r/feropstech/flask-app)
 
----
+## Full Deployment
 
-For full deployment instructions, see **[Deployment Guide](docs/deployment_guide.md)**.
+For the full cloud deployment, see **[Deployment Guide](docs/deployment_guide.md)**.
 
+Highlights:
 
+- Terraform provisions AWS resources: VPC, subnet, internet gateway, security groups, and EC2 instance.
+- EC2 runs the Dockerized Flask app via user_data or manual launch.
+- Monitoring stack (Prometheus + Grafana) visualizes metrics from the Flask app.
 
+## Tech Stack
 
+- Language / Framework: Python (Flask)
+- Containerization: Docker
+- Cloud / IaC: AWS, Terraform
+- Monitoring: Prometheus, Grafana
+- Version Control: Git, GitHub
 
+## Documentation
 
+- Deployment Guide: **[docs/deployment_guide.md](docs/deployment_guide.md)**
+- Docker setup: docker/ folder
+- Terraform scripts: terraform/ folder
+- Monitoring stack: monitoring/ folder

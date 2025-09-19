@@ -1,0 +1,38 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prom_data:/prometheus
+    networks:
+      - devops-playground
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+#    restart: unless-stopped
+    restart: always
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=ferops
+    volumes:
+      - ./grafana:/etc/grafana/provisioning/datasources
+      - graf_data:/var/lib/grafana
+    networks:
+      - devops-playground
+
+volumes:
+  prom_data:
+  graf_data:
+
+networks:
+  devops-playground:
+    name: devops-playground

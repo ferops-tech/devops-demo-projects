@@ -15,12 +15,13 @@ resource "aws_instance" "my_instance_test" {
                                 dnf install -y docker-ce docker-ce-cli containerd.io
                                 mkdir -p /etc/docker
                                 cat <<CONFIG > /etc/docker/daemon.json
-                                    {
-                                      "iptables": false
-                                    }
+                                {
+                                    "iptables": false
+                                }
                                 CONFIG
                                 systemctl enable --now docker
-                                docker run -ti -d --rm -p 8080:5000 feropstech/flask-app:latest
+                                docker network create --driver bridge devops-playground
+                                docker run -d -p 8080:5000 --network devops-playground --name flask-app feropstech/flask-app:latest
                                 EOF
 
 }

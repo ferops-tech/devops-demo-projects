@@ -1,2 +1,3 @@
-# Needs a flask package to run the Python app. It will bw automatically installed by the python base image using 'pip install -r requirements.txt'
+# Needs a flask package to run the Python app. It will be automatically installed by the python base image using 'pip install -r requirements.txt'
 Flask
+prometheus-flask-exporter
