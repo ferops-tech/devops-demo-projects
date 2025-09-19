@@ -1,7 +1,6 @@
 # 💻 DevOps Demo Project
 
-A hands-on **DevOps portfolio project** demonstrating **end-to-end infrastructure, deployment, and monitoring skills**.  
-This project showcases practical abilities with **containerization, infrastructure-as-code, and observability**, in a clear, reproducible format.
+A hands-on **DevOps portfolio project** demonstrating end-to-end deployment, infrastructure-as-code, containerization, and observability in a fully reproducible workflow.
 
 ---
 
@@ -27,20 +26,20 @@ For the full cloud deployment, see **[Deployment Guide](docs/deployment_guide.md
 Highlights:
 
 - Terraform provisions AWS resources: VPC, subnet, internet gateway, security groups, and EC2 instance.
-- EC2 runs the Dockerized Flask app via user_data or manual launch.
+- EC2 runs the Dockerized Flask app via `user_data` or manual launch.
 - Monitoring stack (Prometheus + Grafana) visualizes metrics from the Flask app.
 
 ## Tech Stack
 
-- Language / Framework: Python (Flask)
-- Containerization: Docker
-- Cloud / IaC: AWS, Terraform
-- Monitoring: Prometheus, Grafana
-- Version Control: Git, GitHub
+- **Language / Framework:** Python (Flask)
+- **Containerization:** Docker
+- **Cloud / IaC:** AWS, Terraform
+- **Monitoring:** Prometheus, Grafana
+- **Version Control:** Git, GitHub
 
 ## Documentation
 
-- Deployment Guide: **[docs/deployment_guide.md](docs/deployment_guide.md)**
-- Docker setup: docker/ folder
-- Terraform scripts: terraform/ folder
-- Monitoring stack: monitoring/ folder
+- **Deployment Guide:** **[docs/deployment_guide.md](docs/deployment_guide.md)**
+- **Docker setup:** `docker/` folder
+- **Terraform scripts:** `terraform/` folder
+- **Monitoring stack:** `monitoring/` folder
