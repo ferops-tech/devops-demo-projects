@@ -9,7 +9,7 @@ A hands-on **DevOps portfolio project** demonstrating end-to-end deployment, inf
 Clone the repository and run the app locally:
 
 ```bash
-git clone https://github.com/feropstech/devops-demo-projects.git
+git clone https://github.com/ferops-tech/devops-demo-projects.git
 cd devops-demo-projects
 docker build -f docker/Dockerfile -t flask-app .
 docker run -ti -p 8080:5000 flask-app
