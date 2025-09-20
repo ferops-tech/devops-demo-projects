@@ -22,51 +22,48 @@ Run the container locally to verify it works:
 docker run -ti -p 8080:5000 flask-app
 ```
 
-- The container should start, and you’ll see an interactive prompt or logs confirming it’s running.
+- The container should start, and you’ll see logs confirming it’s running.
 - Open your browser: [http://localhost:8080](http://localhost:8080)
-- **Stop the container** by pressing <kbd>Ctrl</kbd>+<kbd>C</kbd> when done.
+- **Stop the container** with <kbd>Ctrl</kbd>+<kbd>C</kbd> when done.
 
 
 
 ### c. Pull from Remote Repository
 
-This app image is publicly available on Docker Hub and can be run directly using the command below:
+This app image is publicly available on Docker Hub and can be run directly:
 ```shell
 docker run -ti -p 8080:5000 feropstech/flask-app:latest
 ```
 
-- The container should pull the image and start, just like the local build.
+- The container will pull the image and start, just like the local build.
+
 ---
-
-
 
 
 ## Terraform Setup
 
 ### Prerequisites
 
-- AWS credentials configured for an existing account (aws configure).
+- AWS credentials configured for an existing account (`aws configure`).
 
 
 ### a. SSH Key Pair Setup
 
-#### - Existing SSH Key Pair
-If you already have an SSH key pair, make sure it is prepared for Terraform:
-- **Public key** must be named `aws_keypair_test.pub` and stored in the repo at `./terraform/.ssh-terraform/`
-- **Private key** must be named `aws_keypair_test` and remain local (e.g., `~/.ssh/aws_keypair_test`) and is never shared.
+If you already have an SSH key pair:
+- **Public key** must be named `aws_keypair_test.pub` and stored in the repo at `./terraform/.ssh-terraform/`.
+- **Private key** remains local (e.g., `~/.ssh/aws_keypair_test`) and is never shared.
 
->  If you don’t have an existing SSH key pair with this exact name, follow the steps in **Key Pair Setup** below before applying Terraform.
+>  If you don’t have a matching key, follow the steps below.
 
-#### -  Key Pair Setup (if needed)
-
-a. Generate a new SSH key pair and move the public key into the designated `terraform` folder so that Terraform can see it:
+#### Generate a new SSH key pair
+Generate a key and move the public part into the designated Terraform folder:
 ```shell
 cd terraform
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/aws_keypair_test
-chmod 400 ~/.ssh/aws_keypair_test
 mv ~/.ssh/aws_keypair_test.pub ./.ssh-terraform/ 
+chmod 400 ~/.ssh/aws_keypair_test
 ```
-b. Reference the public key in your Terraform configuration:
+Reference the public key in your Terraform configuration:
 ```shell
 resource "aws_key_pair" "keypair_test" {
   public_key = file("~/.ssh-terraform/aws_keypair_test.pub")
@@ -75,15 +72,12 @@ resource "aws_key_pair" "keypair_test" {
 
 
 ### b. Deploy Infrastructure
-Change directory to the Terraform folder:
-```shell
-cd terraform
-```
 Initialize Terraform:
 ```shell
+cd terraform
 terraform init
 ```
-Preview the infrastructure to be created:
+Preview the infrastructure:
 ```shell
 terraform plan
 ```
@@ -101,18 +95,18 @@ Terraform will create:
 
 - Route table and association
 
-- Security group allowing SSH
+- Security group allowing SSH and HTTP
 
 - EC2 instance with specified AMI and keypair
 
 
 ### c. Access the EC2
-1. SSH into the EC2 instance and confirm it is reachable
+1. SSH into the EC2 instance, replacing `YOUR_PRIVATE_KEY` and `YOUR_EC2_PUBLIC_IP` with your actual values:
 ```shell
-ssh -i ~/.ssh/<YOUR_PRIVATE_KEY> ec2-user@<EC2_PUBLIC_IP> # Replace <EC2_PUBLIC_IP> with the actual public IP of your instance available in the output of the successful execution of the terraform deployment
+ssh -i ~/.ssh/<YOUR_PRIVATE_KEY> ec2-user@<YOUR_EC2_PUBLIC_IP> # Replace <YOUR_EC2_PUBLIC_IP> with the actual public IP of your instance available in the output the terraform successful deployment
 ```
 
-Logging in confirms that the EC2 instance is up and accessible. You can now proceed with next chapter.
+Logging in confirms that the EC2 instance is up and accessible.
 
 
 ### d. Useful Terraform Commands
@@ -146,54 +140,60 @@ cd terraform
 terraform destroy
 ```
 - Terraform will show a preview of all resources to be destroyed. 
-- Confirm to proceed and wait for completion. 
-- After this, your EC2 instance, subnet, VPC and other resources will be deleted.
+- Confirm and wait for completion. 
 
-> ⚠️ **Note:** The resources created (EC2, VPC, etc.) may incur charges on your AWS account. 
->    Make sure resources got deleted properly.
+Your EC2 instance, subnet, VPC and other resources will be deleted.
+
+> ⚠️ **Note:** Resources like EC2 and VPCs may incur charges on your AWS account. Always ensure cleanup is successful.
 
 
 
 ---
----
-
-
 ## Monitoring Setup
-
-Connect to the newly created EC2 instance:
+### a. Connect to the EC2 instance
+Use SSH to connect to the newly created instance, replacing `YOUR_PRIVATE_KEY` and `YOUR_EC2_PUBLIC_IP` with your actual values:
 ```shell
-ssh -i ~/.ssh/<YOUR_PRIVATE_KEY> ec2-user@<EC2_PUBLIC_IP> # Replace <EC2_PUBLIC_IP> with the actual public IP of your instance available in the output of the successful execution of the terraform deployment
+ssh -i ~/.ssh/<YOUR_RIVATE_KEY> ec2-user@<YOUR_EC2_PUBLIC_IP> # the public IP is available in the output of the terraform successful deployment
 ```
 
-Ensure the flask-app is properly running with the below command `docker ps`, else launch it (you'll notice the `network` option to launch the container in the same network than the monitoring apps):
+### b. Review the Flask app
+Ensure the flask-app container is running with `docker ps`, else launch it (the `--network` option ensures the container runs in the same network as the monitoring applications):
 ```shell
 docker run -tid -p 8080:5000 --network devops-playground --name flask-app feropstech/flask-app:latest
 ```
-It is reachable on the port 8080 (execute multiple request to make relevant data appear in a later step):
+The application is accessible at:
 - http://<EC2_PUBLIC_IP>:8080
 
-Clone the repository and change directory:
+Send several requests (e.g.: refresh the page) to generate data that will be visible in the monitoring dashboards.
+
+### c. Deploy the monitoring stack
+Clone the repository and navigate to the monitoring directory:
 ```shell
-git clone https://github.com/feropstech/devops-demo-projects.git
+git clone https://github.com/ferops-tech/devops-demo-projects.git
 cd devops-demo-projects/monitoring
 ```
 
-Change directory to the `monitoring` one and create the monitoring containers (Prometheus & Grafana):
+Start Prometheus and Grafana:
 ```shell
-cd monitoring
-docker compose up -d
+sudo docker compose up -d
 ```
 
-The two applications are reachable via:
+Once started, the services are accessible at:
 - http://<EC2_PUBLIC_IP>:9090/
 - http://<EC2_PUBLIC_IP>:3000/
 
-Ensure the flask-app is listed in the monitored targets:
+### d. Verify Prometheus targets
+Confirm that the `flask-app` target is listed as monitored:
 - http://<EC2_PUBLIC_IP>:9090/targets
 
-You can then proceed into Grafana (authentication information available in the docker-compose.yml file in the monitoring folder) to add a dashboard and import the following:
-- \> Dashboard > New > Import 
 
-- Import the `basic-dashboard.json` file in the monitoring repo
+### e. Import the Grafana dashboard
+1. Log in to Grafana using the credentials defined in docker-compose.yml (authentication information available in the docker-compose.yml file).
+
+2. Go to **Dashboard > New > Import**.
+
+3. Upload the `basic-dashboard.json` file from the monitoring directory.
+
 
 ![](../monitoring/dashboard/dashboard.png)
+Your Flask application is now monitored by Prometheus, and metrics can be visualized in Grafana.
