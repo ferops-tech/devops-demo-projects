@@ -3,7 +3,8 @@
 
 # terraform
 terraform/.terraform/
-terraform/terraform.tfstate*
+terraform/terraform.*
+terraform/.terraform.tfstate*
 terraform/.terraform.lock*
 terraform/provider.tf2
 # key

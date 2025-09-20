@@ -10,7 +10,7 @@ resource "aws_instance" "my_instance_test" {
   depends_on                  = [aws_internet_gateway.my_igw]
   user_data                   = <<-EOF
                                 #!/bin/bash
-                                dnf -y install dnf-plugins-core
+                                dnf -y install dnf-plugins-core git
                                 dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
                                 dnf install -y docker-ce docker-ce-cli containerd.io
                                 mkdir -p /etc/docker
