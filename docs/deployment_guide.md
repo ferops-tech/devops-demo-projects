@@ -1,6 +1,8 @@
 ![AWS Deployment Architecture](../monitoring/images/devops-demo-droject-diagram.png)
 *High-level network diagram showing Docker containers on the EC2 instance, accessible via public IP and mapped ports.*
+
 ---
+
 # Deployment Guide
 
 ## Docker Setup
