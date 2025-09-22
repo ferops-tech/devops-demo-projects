@@ -1,4 +1,4 @@
-![AWS Deployment Architecture](../monitoring/images/devops-demo-droject-diagram.png)
+![AWS Deployment Architecture](../monitoring/resources/devops-demo-droject-diagram.png)
 *High-level network diagram showing Docker containers on the EC2 instance, accessible via public IP and mapped ports.*
 
 ---
@@ -200,5 +200,5 @@ Confirm that the `flask-app` target is listed as monitored:
 3. Upload the `basic-dashboard.json` file from the monitoring directory.
 
 
-![](../monitoring/images/dashboard.png)
+![](../monitoring/resources/dashboard.png)
 Your Flask application is now monitored by Prometheus, and metrics can be visualized in Grafana.
