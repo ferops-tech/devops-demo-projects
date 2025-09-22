@@ -1,3 +1,5 @@
+![](../monitoring/images/devops-demo-droject-diagram.png)
+
 # Deployment Guide
 
 ## Docker Setup
@@ -195,5 +197,5 @@ Confirm that the `flask-app` target is listed as monitored:
 3. Upload the `basic-dashboard.json` file from the monitoring directory.
 
 
-![](../monitoring/dashboard/dashboard.png)
+![](../monitoring/images/dashboard.png)
 Your Flask application is now monitored by Prometheus, and metrics can be visualized in Grafana.
