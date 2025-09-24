@@ -1,3 +1,8 @@
+# -----------------------------------------------------------------------------
+# variables.tf
+# Default values for all configurable parameters in this Terraform project.
+# Modify these values only if you want to change the defaults.
+# -----------------------------------------------------------------------------
 variable "vpc_cidr" {
   description = "The CIDR block for the VPC"
   type        = string
@@ -19,7 +24,7 @@ variable "availability_zone" {
 variable "key_pair_public_path" {
   description = "Path to the public key for AWS key pair"
   type        = string
-  default     = ".ssh-terraform/keypair-test.pub"
+  default     = ".ssh-terraform/aws_keypair_test.pub"
 }
 
 variable "instance_type" {
@@ -83,4 +88,28 @@ variable "security_group_description" {
   description = "Description for the security group"
   type        = string
   default     = "Allows accesses to internal machines from the Internet"
+}
+
+variable "root_volume_size" {
+  description = "Size of the root EBS volume in GB"
+  type        = number
+  default     = 25
+}
+
+variable "root_volume_type" {
+  description = "Type of the root EBS volume (gp3, gp2, io1, etc.)"
+  type        = string
+  default     = "gp3"
+}
+
+variable "root_volume_delete_on_termination" {
+  description = "Whether to delete the root volume when the instance is terminated"
+  type        = bool
+  default     = true
+}
+
+variable "user_data_script" {
+  description = "Bootstrap script for the EC2 instance"
+  type        = string
+  default     = "" # Default is empty; provide script via terraform.tfvars (e.g., file("startup.sh"))
 }
