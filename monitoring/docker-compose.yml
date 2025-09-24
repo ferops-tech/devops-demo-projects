@@ -35,4 +35,4 @@ volumes:
 
 networks:
   devops-playground:
-    name: devops-playground
+    external: true
