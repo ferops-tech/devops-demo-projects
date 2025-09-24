@@ -3,9 +3,10 @@
 
 # terraform
 terraform/.terraform/
-terraform/terraform.*
-terraform/.terraform.tfstate*
 terraform/.terraform.lock*
+terraform/.terraform.tfstate
+terraform/terraform.tfstate*
 terraform/provider.tf2
 # key
-terraform/.ssh-terraform/keypair-test.pub
+terraform/.ssh-terraform/*
+!terraform/.ssh-terraform/your-key-here.pub
