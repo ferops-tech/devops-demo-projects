@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# variables.tf
+# 01-variables.tf
 # Default values for all configurable parameters in this Terraform project.
 # Modify these values only if you want to change the defaults.
 # -----------------------------------------------------------------------------
@@ -111,5 +111,5 @@ variable "root_volume_delete_on_termination" {
 variable "user_data_script" {
   description = "Bootstrap script for the EC2 instance"
   type        = string
-  default     = "" # Default is empty; provide script via terraform.tfvars (e.g., file("startup.sh"))
+  default     = "" # Default is empty; provide script via 02-terraform.tfvars (e.g., file("startup.sh"))
 }

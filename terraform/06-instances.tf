@@ -1,3 +1,7 @@
+resource "aws_key_pair" "keypair_test" {
+  public_key = file(var.key_pair_public_path)
+}
+
 resource "aws_instance" "my_instance_test" {
   ami                         = var.ami_id
   instance_type               = var.instance_type

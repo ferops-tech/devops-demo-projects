@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
-# terraform.tfvars
+# 02-terraform.tfvars
 # Your environment-specific variable overrides.
-# Terraform will automatically load this file to override defaults from variables.tf.
+# Terraform will automatically load this file to override defaults from 01-variables.tf.
 # Keep this file private and do NOT commit it to GitHub if it contains sensitive data.
 # -----------------------------------------------------------------------------
 vpc_cidr      = "10.1.0.0/16"
