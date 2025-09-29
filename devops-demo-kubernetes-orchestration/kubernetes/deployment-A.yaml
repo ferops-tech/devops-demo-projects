@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment-a
+  labels:
+    deployment: flask
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: flask
+        image: feropstech/flask-app:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 5000
+        env:
+          - name: APP_VERSION
+            value: "A"   # default value
