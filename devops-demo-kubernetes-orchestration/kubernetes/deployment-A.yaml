@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: flask-deployment-a
   labels:
-    deployment: flask
+    deployment: flask-deployment-a
   namespace: default
 spec:
   replicas: 1
