@@ -38,9 +38,9 @@ podAnnotations: {}
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
 podLabels: {app: flask}
 
-#env:
-#  - name: APP_VERSION
-#    value: "A"   # default value
+env:
+  - name: K8S
+    value: demo-helm
 
 podSecurityContext: {}
   # fsGroup: 2000

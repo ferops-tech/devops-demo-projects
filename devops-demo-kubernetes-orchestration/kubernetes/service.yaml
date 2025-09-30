@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
     - name: "svc-flask"
-      nodePort: 31344
+      nodePort: 30000
       port: 5000
       protocol: TCP
       targetPort: 5000
