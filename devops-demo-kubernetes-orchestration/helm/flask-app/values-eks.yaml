@@ -59,20 +59,27 @@ service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: NodePort
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 5000
+  port: 80
+  targetPort: 5000  # container port
+
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
+  enabled: true
+  className: "alb"
+  annotations:
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/target-type: ip
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
-      paths:
+    - paths:
+#      host: chart-example.local
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
+          service:
+            name: svc-flask
+            port: 80
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -132,11 +139,11 @@ resources: {}
 livenessProbe:
   httpGet:
     path: /
-    port: http
+    port: 5000
 readinessProbe:
   httpGet:
     path: /
-    port: http
+    port: 5000
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
@@ -164,3 +171,4 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+

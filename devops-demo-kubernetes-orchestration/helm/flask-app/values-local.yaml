@@ -2,9 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-namespace:
-  name: flask-ns
-
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 3
 
@@ -62,27 +59,21 @@ service:
   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: NodePort
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 80
-  targetPort: 5000  # container port
-
+  port: 5000
+  targetPort: 5000
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: true
-  className: "alb"
-  annotations:
-      alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/target-type: ip
+  enabled: false
+  className: ""
+  annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - paths:
-#      host: chart-example.local
+    - host: chart-example.local
+      paths:
         - path: /
-          pathType: Prefix
-          service:
-            name: svc-flask
-            port: 80
+          pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -142,11 +133,11 @@ resources: {}
 livenessProbe:
   httpGet:
     path: /
-    port: 5000
+    port: http
 readinessProbe:
   httpGet:
     path: /
-    port: 5000
+    port: http
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
@@ -174,4 +165,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
