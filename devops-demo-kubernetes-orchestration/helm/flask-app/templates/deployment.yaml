@@ -44,9 +44,9 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          {{- if .Values.env }}
+          {{- if .Values.containers.env }}
           env:
-          {{- range .Values.env }}
+          {{- range .Values.containers.env }}
             - name: {{ .name }}
               value: {{ .value | quote }}
           {{- end }}
