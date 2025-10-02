@@ -2,12 +2,12 @@
 .DS_Store
 
 # terraform
-devops-demo-container-deploy/terraform/.terraform/
-devops-demo-container-deploy/terraform/.terraform.lock*
-devops-demo-container-deploy/terraform/.terraform.tfstate
-devops-demo-container-deploy/terraform/terraform.tfstate*
-devops-demo-container-deploy/terraform/provider.tf2
+demo-container-deploy/terraform/.terraform/
+demo-container-deploy/terraform/.terraform.lock*
+demo-container-deploy/terraform/.terraform.tfstate
+demo-container-deploy/terraform/terraform.tfstate*
+demo-container-deploy/terraform/provider.tf2
 
 # key
-devops-demo-container-deploy/terraform/.ssh-terraform/*
-!devops-demo-container-deploy/terraform/.ssh-terraform/your-key-here.pub
+demo-container-deploy/terraform/.ssh-terraform/*
+!demo-container-deploy/terraform/.ssh-terraform/your-key-here.pub
