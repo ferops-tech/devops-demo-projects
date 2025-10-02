@@ -4,4 +4,8 @@ metadata:
   name: demo-devops
   region: eu-west-3
 autoModeConfig:
-  enabled: true
+  enabled: false
+
+nodeGroups:
+  - name: ng-demo
+    desiredCapacity: 3
