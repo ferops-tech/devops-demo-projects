@@ -1,53 +1,59 @@
-# 🛳️️ DevOps Demo Project – Kubernetes & Helm
+# 🛳  DevOps️ Demo Project -- Kubernetes Orchestration
 
-A hands-on **DevOps portfolio project** demonstrating containerized app deployment, Kubernetes orchestration, and Helm packaging in a fully reproducible workflow.
+A hands-on **DevOps portfolio project** demonstrating the deployment of an application on Kubernetes, with Helm packaging for reusable and configurable deployments, and a complete deployment worflow to the cloud using Amazon EKS.
 
 ---
 
 ## Quick Start (Local with Minikube)
 
-This guide shows how to deploy the Flask demo app on **Kubernetes** using raw manifests.  
-Helm charts are also included in this repo for templated deployment.
+Start the cluster setup with minikube:
+```shell
+minikube start --driver=vfkit
+```
 
-### Prerequisites
-- [Minikube](https://minikube.sigs.k8s.io/docs/start/)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [Git](https://git-scm.com/downloads)
-
-Clone the repository and launch the Kubernetes pods:
-
+Clone the repository and launch resources on the local Kubernetes:
 ```bash
 git clone https://github.com/ferops-tech/devops-demo-projects.git
 cd devops-demo-projects/devops-demo-kubernetes-orchestration/kubernetes/
 kubectl apply -f ./
 ```
-Get the dedicated minikube URL and open the link associated (try a different browser in case the default one doesn't render the page ):
+
+Review the running pod and service:
+```shell
+kubectl get pods
+kubectl get svc
+```
+
+Get the dedicated Minikube URL (open the link in your browser. If the default one does not render, try another one):
 ```shell
  minikube service <SERVICE_NAME> --url    # svc-flask
 ```
 
 ## Full Deployment
 
-For the full cloud deployment, see **[Deployment Guide](write the full deployment_guide later)**.
+For the full cloud deployment, see **[Deployment Guide](./docs/deployment_guide.md)**.
 
 Highlights:
 
-- Kubernetes ...
-- Helm...
-- Monitoring stack...
+- Helm chart for Flask application, parameterized for local & EKS
+- Kubernetes manifests for direct deployment
+- EKS cluster setup with IngressClass configured for AWS load balancer (ALB)
+- Ingress configuration exposing the app
+- Monitoring stack deployed from official Helm charts
 
 ## Tech Stack
 
 
+- **Application:** Python (Flask)
 - **Orchestration:** Kubernetes
-- **Packaging:** Helm
-- **Monitoring:** ...
-- .....
+- **Packaging / Templates:** Helm
+- **Cloud:** AWS EKS
+- **Monitoring:** Prometheus + Grafana
+- **Version Control:** Git, GitHub
 
 ## Documentation
 
-- **Deployment Guide:** **[docs/deployment_guide.md](write the full deployment_guide later)**
-- **Kubernetes setup:** `kubernetes/` folder
+- **Deployment Guide:** **[docs/deployment_guide.md](./docs/deployment_guide.md)**
+- **Kubernetes manifests:** `kubernetes/` folder
 - **Helm chart:** `helm/` folder
-- **Monitoring stack:** `monitoring/` folder
-- .....
+- **EKS setup:** `eks/` folder
