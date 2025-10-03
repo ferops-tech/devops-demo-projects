@@ -1,18 +1,17 @@
-[Diagram coming...]
-
-*Diagram legend*
+![eks-setup-architecture](../resources/eks-setup-architecture.png)
+*High-level architecture diagram showing application pods running on Kubernetes nodes (EC2 instances), accessible through the external load balancer address.*
 
 ---
 
-# Deployment Guide -- Kubernetes Orchestration
+# Deployment Guide - Kubernetes Orchestration
 
 ### Prerequisites
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 
-- [Git](https://git-scm.com/downloads)
-- [Helm](https://helm.sh/docs/intro/install/)
-- [Kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [EKSctl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#eksctl-install-update)
+  - [Git](https://git-scm.com/downloads)
+  - [Helm](https://helm.sh/docs/intro/install/)
+  - [Kubectl](https://kubernetes.io/docs/tasks/tools/)
+  - [EKSctl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#eksctl-install-update)
 
 
 
@@ -98,7 +97,7 @@ After configuring AWS CLI access, verify that your credentials are correctly set
 ```shell
 aws sts get-caller-identity
 ```
-Example output if you are connected to your account:
+Example output if you are connected to your account (IDs will vary):
 ```shell
 {
     "UserId": "POIUYTREWQMDLKJHGFDSA",
@@ -109,16 +108,15 @@ Example output if you are connected to your account:
 
 
 ### b. EKS Cluster Creation
-Change directory and deploy the cluster using `eksctl`:
+Deploy the cluster using `eksctl`:
 ```shell
-cd eks/
-eksctl create cluster -f cluster-setup/cluster-config.yaml
+eksctl create cluster -f eks/cluster-setup/cluster-config.yaml
 ```
 > This deployment may take several minutes to complete
 
 Deploy the load balancer controller:
 ```shell
-kubectl apply -f ./cluster-setup/ingressclass.yaml
+kubectl apply -f eks/cluster-setup/ingressclass.yaml
 ```
 > Allow a few minutes for the EKS setup to complete
 
