@@ -31,14 +31,14 @@ Launch Minikube with multiple nodes:
 minikube start -c containerd --cni=calico --driver=vfkit
 ```
 
-### b. App Launch using Helm (local)
+### b. Application Deployment with Helm (Local)
 
 Deploy the application locally using the Helm chart with the local values file:
 ```shell
 helm install flask-app -n flask-ns ./helm/flask-app  --create-namespace -f ./helm/flask-app/values-local.yaml
 ```
 
-### c. Access the App
+### c. Application Access
 Follow the on-screen instructions and open the application in your browser. If the default browser does not render correctly, try another one:
 ```shell
 export NODE_PORT=$(kubectl get --namespace flask-ns -o jsonpath="{.spec.ports[0].nodePort}" services flask-app)
@@ -46,7 +46,7 @@ export NODE_IP=$(kubectl get nodes --namespace flask-ns -o jsonpath="{.items[0].
 echo http://$NODE_IP:$NODE_PORT
 ```
 
-### c. Useful Kubernetes Commands
+### d. Useful Kubernetes Commands
 
 After deploying the infrastructure, you can use the following commands to inspect or troubleshoot your resources:
 ```shell
@@ -73,7 +73,7 @@ minikube -n flask-ns service flask-app --url
 
 ```
 
-### d. Delete Minikube (Cleanup)
+### e. Minikube Deletion (Cleanup)
 This command is used to completely delete the Minikube setup:
 ```shell
 minikube delete
@@ -92,7 +92,7 @@ minikube delete
 - [AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-authentication.html)
 
 
-### a. AWS CLI Access Check
+### a. AWS CLI Access Verification
 
 After configuring AWS CLI access, verify that your credentials are correctly set up:
 ```shell
@@ -107,7 +107,8 @@ Example output if you are connected to your account:
 }
 ```
 
-### b. Cluster Launch
+
+### b. EKS Cluster Creation
 Change directory and deploy the cluster using `eksctl`:
 ```shell
 cd eks/
@@ -121,14 +122,15 @@ kubectl apply -f ./cluster-setup/ingressclass.yaml
 ```
 > Allow a few minutes for the EKS setup to complete
 
-### b. App Launch using Helm (Cloud)
+
+### c. Application Deployment with Helm (Local)
 
 Deploy the application on the cloud:
 ```shell
 helm install demo-feropstech-app --debug -n flask-ns ./helm-flask-app-eks/ --create-namespace
 ```
 
-### c. Configuration Review
+### d. Deployment Review
 ```shell
 helm list -n flask-ns
 kubectl get pods -n flask-ns
@@ -144,8 +146,8 @@ ingress-flask-app   alb     *       k8s-flaskns-ingressf-6bf74956c2-1959894462.u
 > Wait several minutes for the setup to complete and for the Application Load Balancer (ALB) to be provisioned.
 
 
-### d. Cleanup Infrastructure Command
-In the next chapter, we are going to cover the monitoring part. Once completed, the cluster can be cleaned up with the below command:
+### e. Cleanup Infrastructure Command
+**In the next chapter**, we are going to cover the monitoring part. Once completed, the cluster can be cleaned up with the below command:
 ```shell
 eksctl delete cluster -f cluster-setup/cluster-config.yaml
 ```
@@ -189,7 +191,7 @@ export POD_NAME=$(kubectl --namespace monitoring get pod -l "app.kubernetes.io/n
 kubectl --namespace monitoring port-forward $POD_NAME 3000
 ```
 
-### b. Browser Viewing
+### b. Grafana Access
 
 Authenticate **>** Open the Dashboard section > Select the "Node Exporter / Node dashboard":
 ![Node Dashboard](../resources/node-dashboard.png)
