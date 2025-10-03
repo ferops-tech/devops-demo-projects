@@ -26,7 +26,7 @@ For the full cloud deployment, see **[Deployment Guide](docs/deployment_guide.md
 Highlights:
 
 - Terraform provisions AWS resources: VPC, subnet, internet gateway, security groups, and EC2 instance.
-- EC2 runs the Dockerized Flask app via `user_data` or manual launch.
+- EC2 runs the Dockerized Flask app via bootstrap script or manual launch.
 - Monitoring stack (Prometheus + Grafana) visualizes metrics from the Flask app.
 
 ## Tech Stack

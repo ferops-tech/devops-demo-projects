@@ -3,16 +3,16 @@
 
 ---
 
-# Deployment Guide
+# Deployment Guide - Containerised Application  
 
 ## Docker Setup
 
 ### Pre-requisites
 
-- Docker
-- Git
+- [Docker](https://docs.docker.com/engine/install/)
+- [Git](https://git-scm.com/downloads)
 
-### a. App Containerisation & Local Run
+### a. Local App Containerisation
 On your local machine, clone the repository and change directory:
 ```shell
 git clone https://github.com/ferops-tech/devops-demo-projects.git
@@ -34,7 +34,7 @@ Run the container locally to verify it works:
 docker run -ti -p 8080:5000 flask-app
 ```
 
-- The container should start, and you’ll see logs confirming it’s running.
+- The container should start, and you’ll see logs confirming it is running.
 - Open your browser: [http://localhost:8080](http://localhost:8080)
 - **Stop the container** with <kbd>Ctrl</kbd>+<kbd>C</kbd> when done.
 
@@ -76,19 +76,6 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/aws_keypair_test
 mv ~/.ssh/aws_keypair_test.pub ./terraform/.ssh-terraform/ 
 chmod 400 ~/.ssh/aws_keypair_test
 ```
-
-[//]: # (Reference the public key in your Terraform configuration:)
-
-[//]: # (```shell)
-
-[//]: # (resource "aws_key_pair" "keypair_test" {)
-
-[//]: # (  public_key = file&#40;"~/.ssh-terraform/aws_keypair_test.pub"&#41;)
-
-[//]: # (})
-
-[//]: # (```)
-
 
 ### b. Deploy Infrastructure
 Initialize Terraform:
@@ -134,7 +121,7 @@ startup_note = "Wait a few minutes for the application to start and the web inte
 
 
 ### c. Access the EC2
-1. SSH into the EC2 instance, replacing `YOUR_PRIVATE_KEY` and `YOUR_EC2_PUBLIC_IP` with your actual values:
+SSH into the EC2 instance, replacing `YOUR_PRIVATE_KEY` and `YOUR_EC2_PUBLIC_IP` with your actual values:
 ```shell
 ssh -i ~/.ssh/<YOUR_PRIVATE_KEY> ec2-user@<YOUR_EC2_PUBLIC_IP> # Your private key is "aws_keypair_test" if you followed along
 ```
@@ -257,7 +244,7 @@ Confirm that the `flask-app` target is listed as monitored:
 Your Flask application is now monitored by Prometheus, and metrics can be visualized in Grafana.
 
 
-### f. Optional: Destroy Infrastructure (Final Cleanup)
+### f. Destroy Infrastructure (Final Cleanup)
 
 Once you have completed testing and monitoring, you can **permanently remove all resources**.
 
@@ -265,6 +252,7 @@ Once you have completed testing and monitoring, you can **permanently remove all
 ```shell
 logout
 ```
+
 2. Execute Terraform commands locally:
 ```shell
 cd terraform
