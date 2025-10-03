@@ -1,4 +1,4 @@
-# 🛳  DevOps️ Demo Project -- Kubernetes Orchestration
+# 🛳  DevOps️ Demo Project - Kubernetes Orchestration
 
 A hands-on **DevOps portfolio project** demonstrating the deployment of an application on Kubernetes, with Helm packaging for reusable and configurable deployments, and a complete deployment worflow to the cloud using Amazon EKS.
 
