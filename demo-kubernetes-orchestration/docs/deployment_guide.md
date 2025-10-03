@@ -131,6 +131,7 @@ helm install demo-feropstech-app --debug -n flask-ns ./helm-flask-app-eks/ --cre
 ```
 
 ### d. Deployment Review
+
 ```shell
 helm list -n flask-ns
 kubectl get pods -n flask-ns
@@ -148,6 +149,7 @@ ingress-flask-app   alb     *       k8s-flaskns-ingressf-6bf74956c2-1959894462.u
 
 ### e. Cleanup Infrastructure Command
 **In the next chapter**, we are going to cover the monitoring part. Once completed, the cluster can be cleaned up with the below command:
+
 ```shell
 eksctl delete cluster -f cluster-setup/cluster-config.yaml
 ```
