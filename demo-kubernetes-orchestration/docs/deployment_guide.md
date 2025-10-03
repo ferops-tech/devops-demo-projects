@@ -46,7 +46,7 @@ export NODE_IP=$(kubectl get nodes --namespace flask-ns -o jsonpath="{.items[0].
 echo http://$NODE_IP:$NODE_PORT
 ```
 
-### c. Useful Kubernetes Commands
+### d. Useful Kubernetes Commands
 
 After deploying the infrastructure, you can use the following commands to inspect or troubleshoot your resources:
 ```shell
@@ -73,7 +73,7 @@ minikube -n flask-ns service flask-app --url
 
 ```
 
-### d. Delete Minikube (Cleanup)
+### e. Delete Minikube (Cleanup)
 This command is used to completely delete the Minikube setup:
 ```shell
 minikube delete
@@ -121,14 +121,14 @@ kubectl apply -f ./cluster-setup/ingressclass.yaml
 ```
 > Allow a few minutes for the EKS setup to complete
 
-### b. App Launch using Helm (Cloud)
+### c. App Launch using Helm (Cloud)
 
 Deploy the application on the cloud:
 ```shell
 helm install demo-feropstech-app --debug -n flask-ns ./helm-flask-app-eks/ --create-namespace
 ```
 
-### c. Configuration Review
+### d. Configuration Review
 ```shell
 helm list -n flask-ns
 kubectl get pods -n flask-ns
@@ -144,7 +144,7 @@ ingress-flask-app   alb     *       k8s-flaskns-ingressf-6bf74956c2-1959894462.u
 > Wait several minutes for the setup to complete and for the Application Load Balancer (ALB) to be provisioned.
 
 
-### d. Cleanup Infrastructure Command
+### e. Cleanup Infrastructure Command
 In the next chapter, we are going to cover the monitoring part. Once completed, the cluster can be cleaned up with the below command:
 ```shell
 eksctl delete cluster -f cluster-setup/cluster-config.yaml
