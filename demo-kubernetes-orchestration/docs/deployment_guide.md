@@ -7,11 +7,11 @@
 
 ### Prerequisites
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
-
-  - [Git](https://git-scm.com/downloads)
-  - [Helm](https://helm.sh/docs/intro/install/)
-  - [Kubectl](https://kubernetes.io/docs/tasks/tools/)
-  - [EKSctl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#eksctl-install-update)
+- [Git](https://git-scm.com/downloads)
+- [Helm](https://helm.sh/docs/intro/install/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/)
+- [AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-authentication.html)
+- [eksctl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#eksctl-install-update)
 
 
 
@@ -85,11 +85,6 @@ minikube delete
 
 ## Amazon EKS Setup
 > ⚠️ **Note:** Resources created in this chapter will incur charges on your AWS account.
-
-### Prerequisites
-
-- [AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-authentication.html)
-
 
 ### a. AWS CLI Access Verification
 
