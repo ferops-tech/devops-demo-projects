@@ -11,3 +11,6 @@ demo-container-deploy/terraform/provider.tf2
 # key
 demo-container-deploy/terraform/.ssh-terraform/*
 !demo-container-deploy/terraform/.ssh-terraform/your-key-here.pub
+
+# eks
+demo-kubernetes-orchestration/eks/flask-app/flask-app.yaml
