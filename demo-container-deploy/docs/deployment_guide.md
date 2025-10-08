@@ -16,12 +16,12 @@
 On your local machine, clone the repository and change directory:
 ```shell
 git clone https://github.com/ferops-tech/devops-demo-projects.git
-cd devops-demo-projects
+cd devops-demo-projects/demo-container-deploy/app
 ```
 
 Build the app:
 ```shell
-docker build -f docker/Dockerfile -t flask-app .
+docker build -t flask-app .
 docker image ls flask-app # to review the image has been built successfully
 ```
 
