@@ -44,7 +44,7 @@ containers:
       value: demo-helm
 
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 securityContext: {}
   # capabilities:
@@ -52,7 +52,7 @@ securityContext: {}
   #   - ALL
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
-  # runAsUser: 1000
+# runAsUser: 1000
 
 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
 service:
@@ -66,15 +66,15 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "alb"
+  className: "traefik"
   annotations:
-      alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
     - paths:
-#      host: chart-example.local
+        #      host: chart-example.local
         - path: /
           pathType: Prefix
           service:
@@ -95,18 +95,18 @@ httpRoute:
   annotations: {}
   # Which Gateways this Route is attached to.
   parentRefs:
-  - name: gateway
-    sectionName: http
-    # namespace: default
+    - name: gateway
+      sectionName: http
+      # namespace: default
   # Hostnames matching HTTP header.
   hostnames:
-  - chart-example.local
+    - chart-example.local
   # List of rules and filters applied.
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /headers
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /headers
   #   filters:
   #   - type: RequestHeaderModifier
   #     requestHeaderModifier:
@@ -133,7 +133,7 @@ resources: {}
   #   memory: 128Mi
   # requests:
   #   cpu: 100m
-  #   memory: 128Mi
+#   memory: 128Mi
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
