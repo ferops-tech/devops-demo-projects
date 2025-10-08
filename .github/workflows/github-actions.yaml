@@ -45,4 +45,3 @@ jobs:
           context: ./demo-container-deploy/docker/
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:${{ env.TAG }}
-
