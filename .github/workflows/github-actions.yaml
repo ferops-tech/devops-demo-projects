@@ -55,11 +55,8 @@ jobs:
       # 6️⃣ Update Helm values with new Docker image and tag
       - name: Update Helm values
         run: |
-          cd demo-kubernetes-orchestration/helm/flask-app
           sed -i "s|repository:.*|repository: ${DOCKER_USERNAME}/flask-app|" demo-kubernetes-orchestration/helm/flask-app/values-local-k3d.yaml
           sed -i "s|tag:.*|tag: \"$TAG\"|" demo-kubernetes-orchestration/helm/flask-app/values-local-k3d.yaml
-
-          cd local-infra
           git config user.email "github-actions@users.noreply.github.com"
           git config user.name "GitHub Actions"
           git commit -am "Update Docker image tag to '$TAG'" || echo "No changes to commit"
