@@ -72,16 +72,15 @@ If you already have an SSH key pair:
 #### Generate a new SSH key pair
 Generate a key and move the public part into the designated Terraform folder:
 ```shell
-cd demo-container-deploy
+cd demo-container-deploy/terraform
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/aws_keypair_test
-mv ~/.ssh/aws_keypair_test.pub ./terraform/.ssh-terraform/ 
+mv ~/.ssh/aws_keypair_test.pub .ssh-terraform/ 
 chmod 400 ~/.ssh/aws_keypair_test
 ```
 
 ### b. Deploy Infrastructure
 Initialize Terraform:
 ```shell
-cd terraform
 terraform init
 ```
 Preview the infrastructure with the below command. It will show the execution plan, detailing what changes Terraform will make.
@@ -105,14 +104,14 @@ Terraform will create:
 Example output (IDs and IPs will vary):
 ```shell
 aws_vpc.my_vpc: Creating...
-aws_key_pair.keypair_test: Creating...
-aws_key_pair.keypair_test: Creation complete after 0s [id=terraform-20250924101958725700000001]
 ...
-aws_instance.my_instance_test: Creation complete after 12s [id=i-05279f837a7e5a787]
+aws_instance.my_instance_test: Still creating... [00m10s elapsed]
+aws_instance.my_instance_test: Creation complete after 13s [id=i-043d8e3b88b15d8ea]
 
-Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 10 added, 0 changed, 0 destroyed.
 
 Outputs:
+
 
 app_url = "http://35.181.192.242:8080"
 instance_private_ip = "10.0.0.10"
@@ -124,7 +123,7 @@ startup_note = "Wait a few minutes for the application to start and the web inte
 ### c. Access the EC2
 SSH into the EC2 instance, replacing `YOUR_PRIVATE_KEY` and `YOUR_EC2_PUBLIC_IP` with your actual values:
 ```shell
-ssh -i ~/.ssh/<YOUR_PRIVATE_KEY> ec2-user@<YOUR_EC2_PUBLIC_IP> # Your private key is "aws_keypair_test" if you followed along
+ssh -o IdentitiesOnly=yes -i ~/.ssh/<YOUR_PRIVATE_KEY> ec2-user@<YOUR_EC2_PUBLIC_IP> # Your private key is "aws_keypair_test" if you followed along. The -o option avoids potential issues related to the SSH agent.
 ```
 
 Expected output (your IP and fingerprints will differ):
@@ -180,7 +179,7 @@ Your EC2 instance, subnet, VPC and other resources will be permanently deleted.
 ### a. Connect to the EC2 instance
 Use SSH to connect to the newly created instance, replacing `YOUR_PRIVATE_KEY` and `YOUR_EC2_PUBLIC_IP` with your actual values:
 ```shell
-ssh -i ~/.ssh/<YOUR_PRIVATE_KEY> ec2-user@<YOUR_EC2_PUBLIC_IP> # Your private key is "aws_keypair_test" if you followed along
+ssh -o IdentitiesOnly=yes -i ~/.ssh/<YOUR_PRIVATE_KEY> ec2-user@<YOUR_EC2_PUBLIC_IP> # Your private key is "aws_keypair_test" if you followed along. The -o option avoids potential issues related to the SSH agent.
 ```
 
 ### b. Review the Flask app
