@@ -3,9 +3,10 @@ name: Docker Image CI
 on:
   push:
     branches: [ "github-actions-first-draft" ]
-    # paths:
-    #   - './demo-container-deploy/app/**'
-    #   - './demo-container-deploy/docker/**'
+    paths:
+      - 'demo-container-deploy/app/**'
+      - 'demo-container-deploy/docker/**'
+      - '.github/workflows/**'
 
 jobs:
   docker_build:
