@@ -28,7 +28,6 @@ jobs:
           
       # 3️⃣ Set version tag (timestamp)          
       - name: Set version tag
-        id: vars
         run: echo "TAG=$(date +%Y%m%d-%H%M%S)" >> $GITHUB_ENV
 
         
@@ -43,7 +42,7 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
 #          context: ./app
-          context: ./demo-container-deploy/docker/
+          context: demo-container-deploy/app
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/flask-app:${{ env.TAG }}
           
