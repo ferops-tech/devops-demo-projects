@@ -56,8 +56,8 @@ jobs:
       - name: Update Helm values
         run: |
           cd demo-kubernetes-orchestration/helm/flask-app
-          sed -i "s|repository:.*|repository: ${DOCKER_USERNAME}/flask-app|" local-infra/demo-kubernetes-orchestration/helm/flask-app/values-local-k3d.yaml
-          sed -i "s|tag:.*|tag: \"$TAG\"|" local-infra/demo-kubernetes-orchestration/helm/flask-app/values-local-k3d.yaml
+          sed -i "s|repository:.*|repository: ${DOCKER_USERNAME}/flask-app|" demo-kubernetes-orchestration/helm/flask-app/values-local-k3d.yaml
+          sed -i "s|tag:.*|tag: \"$TAG\"|" demo-kubernetes-orchestration/helm/flask-app/values-local-k3d.yaml
 
           cd local-infra
           git config user.email "github-actions@users.noreply.github.com"
