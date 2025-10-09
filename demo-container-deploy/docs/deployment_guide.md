@@ -72,6 +72,7 @@ If you already have an SSH key pair:
 #### Generate a new SSH key pair
 Generate a key and move the public part into the designated Terraform folder:
 ```shell
+cd demo-container-deploy
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/aws_keypair_test
 mv ~/.ssh/aws_keypair_test.pub ./terraform/.ssh-terraform/ 
 chmod 400 ~/.ssh/aws_keypair_test
@@ -196,8 +197,7 @@ Send several requests (e.g.: refresh the page multiple times) to generate data t
 ### c. Deploy the monitoring stack
 **On the ec2 instance**, clone the repository and navigate to the monitoring directory:
 ```shell
-git clone https://github.com/ferops-tech/devops-demo-projects.git
-cd devops-demo-projects/monitoring
+cd devops-demo-projects/demo-container-deploy/monitoring
 ```
 
 Start Prometheus and Grafana (images will be pulled from official repositories):
