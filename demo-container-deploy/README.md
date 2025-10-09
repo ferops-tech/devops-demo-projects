@@ -10,8 +10,8 @@ Clone the repository and run the app locally:
 
 ```bash
 git clone https://github.com/ferops-tech/devops-demo-projects.git
-cd devops-demo-projects
-docker build -f docker/Dockerfile -t flask-app .
+cd devops-demo-projects/demo-container-deploy/app
+docker build -t flask-app .
 docker run -ti -p 8080:5000 flask-app
 ```
 
