@@ -5,6 +5,7 @@
 demo-container-deploy/terraform/.terraform/
 demo-container-deploy/terraform/.terraform.lock*
 demo-container-deploy/terraform/.terraform.tfstate
+*terraform.tfstate
 demo-container-deploy/terraform/terraform.tfstate*
 demo-container-deploy/terraform/provider.tf2
 

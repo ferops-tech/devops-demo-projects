@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# 02-terraform.tfvars
+# terraform.tfvars
 # Your environment-specific variable overrides.
 # Terraform will automatically load this file to override defaults from 01-variables.tf.
 # Keep this file private and do NOT commit it to GitHub if it contains sensitive data.
