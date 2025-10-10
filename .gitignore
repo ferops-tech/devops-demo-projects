@@ -5,9 +5,14 @@
 demo-container-deploy/terraform/.terraform/
 demo-container-deploy/terraform/.terraform.lock*
 demo-container-deploy/terraform/.terraform.tfstate
-*terraform.tfstate
 demo-container-deploy/terraform/terraform.tfstate*
 demo-container-deploy/terraform/provider.tf2
+demo-gitops-argocd/terraform/bootstrap/startupBKP.sh
+demo-gitops-argocd/terraform/.terraform*
+demo-gitops-argocd/terraform/.ssh-terraform/aws_keypair_test.pub
+demo-gitops-argocd/terraform/terraform.tfstate
+demo-gitops-argocd/terraform/terraform*
+demo-gitops-argocd/terraform/bootstrap/startupBKP.sh
 
 # key
 demo-container-deploy/terraform/.ssh-terraform/*

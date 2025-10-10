@@ -1,0 +1,3 @@
+# This is an example public key file for Terraform.
+# Generate your own key using `ssh-keygen` and replace this file if needed.
+# Referenced in Terraform deployment guide as "aws_keypair_test.pub".
