@@ -13,9 +13,9 @@ def hello_world():
     if version:
         version_text = f" Version {version}"
         return f'<h1>☸️ Hello from your K8s Playground!{version_text}</h1>'
-    elif playground == "K8S":
+    elif playground == "demo-helm":
         return f'<h1>☸️ Hello from your K8s Playground!</h1>'
-    elif playground == "K3D":
+    elif playground == "demo-gitops":
         return f'<h1>🤖️ Hello from your K3d Playground!</h1>'
     else:
         return f'<h1>🚀 Hello from your DevOps Playground!</h1>'
