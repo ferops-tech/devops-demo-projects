@@ -40,8 +40,8 @@ podLabels: {app: flask}
 
 containers:
   env:
-    - name: K8S
-      value: demo-helm
+    - name: K3D
+      value: demo-gitops
 
 podSecurityContext: {}
 # fsGroup: 2000
