@@ -6,6 +6,7 @@
 **terraform.tfstate*
 **/terraform/provider.tf2
 **/.terraform/
+terraform-app-bkp/
 
 # key
 **/terraform/.ssh-terraform/*

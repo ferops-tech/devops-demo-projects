@@ -1,20 +1,3 @@
-#variable "argocd_server_addr" {
-#  description = "ArgoCD API server address (host:port)"
-#  type        = string
-#}
-#
-#variable "argocd_username" {
-#  description = "ArgoCD username"
-#  type        = string
-#}
-#
-#variable "argocd_password" {
-#  description = "ArgoCD password"
-##  default     = "cobFGRpr3MF5XpOL"
-#  type        = string
-#  sensitive   = true
-#}
-
 variable "app_name" {
   description = "Name of the ArgoCD application"
   type        = string
@@ -55,4 +38,10 @@ variable "ingress_class_name" {
   description = "Ingress class name to pass to Helm"
   type        = string
   default     = "traefik"
+}
+
+variable "argocd_admin_password" {
+  description = "Enter the password of the ArgoCD 'admin' user"
+  type        = string
+  sensitive   = false
 }

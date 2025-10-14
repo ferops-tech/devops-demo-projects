@@ -1,6 +1,6 @@
-output "app_url" {
-  description = "Direct link to the app running on the port defined in the bootstrap:"
-  value       = "http://${aws_instance.my_instance_test.public_ip}:8080"
+output "argocd_url" {
+  description = "Direct link to ArgoCD"
+  value       = "http://${aws_instance.my_instance_test.public_ip}:30080"
 }
 
 output "instance_public_ip" {
@@ -8,11 +8,12 @@ output "instance_public_ip" {
   value       = aws_instance.my_instance_test.public_ip
 }
 
-output "instance_private_ip" {
-  value = aws_instance.my_instance_test.private_ip
-}
-
 output "startup_note" {
   description = "Wait notice for the web interface"
-  value       = "Wait a few minutes for the application to start and the web interface to become reachable."
+  value       = "Wait a few minutes for the application to start and the web UI to be reachable. In the meantime, you can observe the logs with the above command."
+}
+
+output "logs_command" {
+  description = "Command to see logs"
+  value       = "ssh -i ~/.ssh/aws_keypair_test -o IdentitiesOnly=yes ec2-user@${aws_instance.my_instance_test.public_ip} tail -f /var/log/cloud-init-output.log"
 }
