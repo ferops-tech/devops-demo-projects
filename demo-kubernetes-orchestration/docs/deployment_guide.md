@@ -1,4 +1,4 @@
-![eks-setup-architecture](../resources/eks-setup-architecture.png)
+![eks-setup-architecture](resources/eks-setup-architecture.png)
 *High-level architecture diagram showing application pods running on Kubernetes nodes (EC2 instances), accessible through the external load balancer address.*
 
 ---
@@ -189,7 +189,7 @@ kubectl --namespace monitoring port-forward $POD_NAME 3000
 ### b. Grafana Access
 
 Authenticate **>** Open the Dashboard section > Select the "Node Exporter / Node dashboard":
-![Node Dashboard](../resources/node-dashboard.png)
+![Node Dashboard](resources/node-dashboard.png)
 Your cluster nodes are now monitored and metrics can be visualized in Grafana.
 
 
