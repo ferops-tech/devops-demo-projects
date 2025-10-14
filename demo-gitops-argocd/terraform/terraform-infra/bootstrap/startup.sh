@@ -82,7 +82,7 @@ helm repo update
 # Deployed ArgoCD using custom values:
 # ---------------------------------------------------
 git clone -b gitops https://github.com/ferops-tech/devops-demo-projects.git
-helm install argocd argo/argo-cd -n argocd --values devops-demo-projects/demo-gitops-argocd/manifests/argocd/values.yaml --create-namespace
+helm install argocd argo/argo-cd -n argocd --values devops-demo-projects/demo-gitops-argocd/argocd/values.yaml --create-namespace
 
 # ---------------------------------------------------
 # Deploy custom app

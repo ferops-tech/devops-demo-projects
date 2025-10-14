@@ -8,11 +8,11 @@ resource "aws_subnet" "my_public_subnet_a" {
   cidr_block        = var.public_subnet_cidr
   availability_zone = var.availability_zone
   tags              = var.subnet_tags
-  depends_on = [aws_vpc.my_vpc]
+  depends_on        = [aws_vpc.my_vpc]
 }
 
 resource "aws_internet_gateway" "my_igw" {
-  tags   = var.igw_tags
+  tags = var.igw_tags
 
 }
 
