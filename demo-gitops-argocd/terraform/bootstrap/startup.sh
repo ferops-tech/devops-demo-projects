@@ -6,10 +6,8 @@
 # - Installs Docker, Kubernetes tooling, k3d, Helm, and Git
 # - Configures Docker daemon and adds ec2-user to docker group
 # - Creates a k3d Kubernetes cluster and sets up kubeconfig
-# - Clones demo repositories and deploys sample apps with Helm
-# - Prepares ArgoCD for GitOps deployments
 # - Enables bash completions for kubectl, k3d, and Helm
-# - But obviously, all this runs automatically on first boot!
+# - Clones repository and prepares ArgoCD for GitOps deployments
 # -----------------------------------------------------------------------------
 #!/bin/bash
 
@@ -58,13 +56,14 @@ dnf install git -y
 # ---------------------------------------------------
 # Deploy cluster
 # ---------------------------------------------------
-k3d cluster create demo-devops -p "8080:80@loadbalancer" --agents 2 --wait
+k3d cluster create demo-devops -p "80:80@loadbalancer" -p "30080:30080@loadbalancer" --agents 2 --wait
 
 # ---------------------------------------------------
 # Prepare kubernetes usage for user ec2-user
 # ---------------------------------------------------
 mkdir -p /home/ec2-user/.kube
-k3d kubeconfig get demo-devops > /home/ec2-user/.kube/configchown ec2-user:ec2-user /home/ec2-user/.kube/config
+k3d kubeconfig get demo-devops > /home/ec2-user/.kube/config
+chown ec2-user:ec2-user /home/ec2-user/.kube/config
 chmod 600 /home/ec2-user/.kube/config
 tee -a /home/ec2-user/.bashrc <<'EOF'
 source <(kubectl completion bash)
@@ -72,12 +71,6 @@ alias k=kubectl
 complete -F __start_kubectl k
 EOF
 chown ec2-user:ec2-user /home/ec2-user/.bashrc
-
-# ---------------------------------------------------
-# Deploy custom app
-# ---------------------------------------------------
-git clone -b gitops https://github.com/ferops-tech/devops-demo-projects.git
-helm install -n flask-ns demo-devops devops-demo-projects/demo-kubernetes-orchestration/helm/flask-app  -f devops-demo-projects/demo-kubernetes-orchestration/helm/flask-app/values-eks.yaml --set ingress.className=traefik --create-namespace
 
 # ---------------------------------------------------
 # Prepare ArgoCD Deployment
@@ -88,4 +81,10 @@ helm repo update
 # ---------------------------------------------------
 # Deployed ArgoCD using custom values:
 # ---------------------------------------------------
+git clone -b gitops https://github.com/ferops-tech/devops-demo-projects.git
 helm install argocd argo/argo-cd -n argocd --values devops-demo-projects/demo-gitops-argocd/manifests/argocd/values.yaml --create-namespace
+
+# ---------------------------------------------------
+# Deploy custom app
+# ---------------------------------------------------
+#helm install -n flask-ns demo-devops devops-demo-projects/demo-kubernetes-orchestration/helm/flask-app  -f devops-demo-projects/demo-kubernetes-orchestration/helm/flask-app/values-eks.yaml --set ingress.className=traefik --create-namespace
