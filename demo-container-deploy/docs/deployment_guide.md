@@ -126,7 +126,7 @@ SSH into the EC2 instance, replacing `YOUR_PRIVATE_KEY` and `YOUR_EC2_PUBLIC_IP`
 ssh -o IdentitiesOnly=yes -i ~/.ssh/<YOUR_PRIVATE_KEY> ec2-user@<YOUR_EC2_PUBLIC_IP> # Your private key is "aws_keypair_test" if you followed along. The -o option avoids potential issues related to the SSH agent.
 ```
 
-Expected output (your IP and fingerprints will differ):
+###### Expected output (your IP and fingerprints will differ):
 ```bash
 The authenticity of host '<YOUR_EC2_PUBLIC_IP> (<YOUR_EC2_PUBLIC_IP>)' can't be established.
 ED25519 key fingerprint is SHA256:DM3CNx9qhQOocdefF1l2BC/thtYTE8kdAf3xIxtV30g.
@@ -204,7 +204,7 @@ Start Prometheus and Grafana (images will be pulled from official repositories):
 sudo docker compose up -d
 ```
 
-**Expected output**:
+###### Expected output:
 ```shell
 [+] Running 22/22
  ✔ grafana Pulled 

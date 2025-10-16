@@ -1,4 +1,4 @@
-# 🛳  DevOps️ Demo Project - Kubernetes Orchestration
+# ☸️ DevOps️ Demo Project - Kubernetes Orchestration
 
 A hands-on **DevOps portfolio project** demonstrating the deployment of an application on Kubernetes, with Helm packaging for reusable and configurable deployments, and a complete deployment worflow to the cloud using Amazon EKS.
 
@@ -31,25 +31,24 @@ Get the dedicated Minikube URL (open the link in your browser. If the default on
 
 ## Full Deployment
 
-For the full cloud deployment, see **[Deployment Guide](./docs/deployment_guide.md)**.
+For the full cloud setup, see **[Deployment Guide](./docs/deployment_guide.md)**.
 
 Highlights:
 
-- Helm chart for Flask application, parameterized for local & EKS
-- Kubernetes manifests for direct deployment
-- EKS cluster setup with IngressClass configured for AWS load balancer (ALB)
-- Ingress configuration exposing the app
-- Monitoring stack deployed from official Helm charts
+- **Helm** chart for Flask application, parameterized for local & EKS
+- **Kubernetes** manifests for direct deployment
+- **EKS** cluster setup with IngressClass configured for AWS load balancer (ALB)
+- **Ingress** configuration exposing the app
+- **Monitoring** stack deployed from official Helm charts
 
 ## Tech Stack
 
 
-- **Application:** Python (Flask)
-- **Orchestration:** Kubernetes
-- **Packaging / Templates:** Helm
-- **Cloud:** AWS EKS
-- **Monitoring:** Prometheus + Grafana
-- **Version Control:** Git, GitHub
+- Orchestration: **Kubernetes**
+- Packaging / Templates: **Helm**
+- Cloud: **AWS EKS**
+- Monitoring: **Prometheus + Grafana**
+- Version Control: **Git, GitHub**
 
 ## Documentation
 
