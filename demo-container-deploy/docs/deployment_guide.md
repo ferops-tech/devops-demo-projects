@@ -239,7 +239,7 @@ Confirm that the `flask-app` target is listed as monitored:
 3. Upload the `basic-dashboard.json` file from the monitoring directory.
 
 
-![](../monitoring/resources/dashboard.png)
+![Dashboard](../monitoring/resources/dashboard.png)
 Your Flask application is now monitored by Prometheus, and metrics can be visualized in Grafana.
 
 

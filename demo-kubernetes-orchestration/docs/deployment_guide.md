@@ -84,7 +84,7 @@ minikube delete
 
 
 ## Amazon EKS Setup
-> ⚠️ **Note:** Resources created in this chapter may incur charges on your AWS account.
+> ⚠️ **Note:** Resources created in this chapter may incur charges on your AWS account (~€0.20/hour for the entire setup).
 
 ### a. AWS CLI Access Verification
 
@@ -107,7 +107,7 @@ Deploy the cluster using `eksctl`:
 ```shell
 eksctl create cluster -f eks/cluster-setup/cluster-config.yaml
 ```
-> This deployment may take several minutes to complete
+> This deployment may take several minutes to complete (~13m)
 
 Deploy the load balancer controller:
 ```shell

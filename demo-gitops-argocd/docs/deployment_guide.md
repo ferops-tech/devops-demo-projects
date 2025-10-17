@@ -1,4 +1,4 @@
-![]()
+![]()![](resources/Diagram-Demo-GitOps.png)
 *High-level architecture diagram showing ...*
 
 ---
@@ -44,7 +44,7 @@ Open the appl in your browser: [http://127.0.0.1:8080](http://127.0.0.1:8080)
 
 
 ## Kubernetes Setup (AWS Cloud)
-> ⚠️ **Note:** Resources created in this chapter may incur charges on your AWS account (~€0.10/hour for EC2 + networking).
+> ⚠️ **Note:** Resources created in this chapter may incur charges on your AWS account (~€0.10/hour for the entire setup).
 
 ### a. AWS Credentials Setup
 Provide your AWS credentials as environment variables:
