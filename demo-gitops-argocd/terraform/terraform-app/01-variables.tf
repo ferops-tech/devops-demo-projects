@@ -19,7 +19,7 @@ variable "repo_url" {
 variable "repo_branch" {
   description = "Git branch to track"
   type        = string
-  default     = "gitops"
+  default     = "main"
 }
 
 variable "chart_path" {

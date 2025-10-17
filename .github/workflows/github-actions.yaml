@@ -2,13 +2,13 @@ name: Docker Image CI
 
 on:
   push:
-    branches: ["gitops"]
+    branches: ["main"]
     paths:
       - 'demo-container-deploy/app/**'
       - '.github/workflows/**'
 
 env:
-  BRANCH_NAME: gitops
+  BRANCH_NAME: main
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
 
