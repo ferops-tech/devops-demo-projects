@@ -4,9 +4,9 @@
 # DevOps Demo Projects
 
 Welcome to the DevOps Demo Projects repository, a hands-on showcase of end-to-end DevOps practices, 
-from containerization and infrastructure-as-code to Kubernetes orchestration and cloud deployment.
-This repository serves as a portfolio of practical, real-world projects demonstrating modern DevOps workflows,
-tooling, and best practices.
+from containerization and infrastructure-as-code to Kubernetes orchestration and cloud deployment.  
+This repository serves as a portfolio of practical, real-world and reproducible projects demonstrating modern DevOps workflows,
+and tooling.
 
 
 ---
@@ -39,7 +39,7 @@ Highlights:
 - Integration of Prometheus + Grafana for monitoring and observability
 
 
-[Detailed Container Deployment Demo README](./demo-container-deploy)
+[Explore the container deployment project](./demo-container-deploy)
 
 ---
 
@@ -53,7 +53,7 @@ Highlights:
 - Helm chart packaging for reusable, configurable deployments
 - EKS cluster setup with AWS Load Balancer (ALB) and Ingress configuration
 
-[Detailed Kubernetes Orchestration Demo README](./demo-kubernetes-orchestration)
+[Explore the kubernetes orchestration project](./demo-kubernetes-orchestration)
 
 ---
 
@@ -68,7 +68,7 @@ Highlights:
 - Deployment of the Flask application via ArgoCD applications using Terraform
 - CI/CD integration with GitHub Actions to automatically build images and sync changes to the cluster
 
-[Detailed GitOps project](./demo-gitops-argocd)
+[Explore the GitOps project](./demo-gitops-argocd)
 
 ---
 
@@ -113,6 +113,6 @@ This repository is perfect for:
 
 ---
 
-This repository is maintained by FerOps.Tech as a practical showcase of modern DevOps workflows and projects.
+This repository is maintained by Ferops.Tech as a practical showcase of modern DevOps workflows and projects.
 
 ---
