@@ -1,4 +1,4 @@
-![eks-setup-architecture](../resources/eks-setup-architecture.png)
+![eks-setup-architecture](resources/eks-setup-architecture.png)
 *High-level architecture diagram showing application pods running on Kubernetes nodes (EC2 instances), accessible through the external load balancer address.*
 
 ---
@@ -84,7 +84,7 @@ minikube delete
 
 
 ## Amazon EKS Setup
-> ⚠️ **Note:** Resources created in this chapter will incur charges on your AWS account.
+> ⚠️ **Note:** Resources created in this chapter may incur charges on your AWS account (~€0.20/hour for the entire setup).
 
 ### a. AWS CLI Access Verification
 
@@ -107,7 +107,7 @@ Deploy the cluster using `eksctl`:
 ```shell
 eksctl create cluster -f eks/cluster-setup/cluster-config.yaml
 ```
-> This deployment may take several minutes to complete
+> This deployment may take several minutes to complete (~13m)
 
 Deploy the load balancer controller:
 ```shell
@@ -132,7 +132,7 @@ kubectl get ingress -n flask-ns
 ```
 > The last command will show the URL that will be needed to access the application on Internet.
 
-Expected output (Address will vary)
+###### Expected output (Address will vary)
 ```shell
 NAME                CLASS   HOSTS   ADDRESS                                                                    PORTS   AGE
 ingress-flask-app   alb     *       k8s-flaskns-ingressf-6bf74956c2-1959894462.us-west-1.elb.amazonaws.com     80      31s
@@ -147,7 +147,7 @@ ingress-flask-app   alb     *       k8s-flaskns-ingressf-6bf74956c2-1959894462.u
 eksctl delete cluster -f cluster-setup/cluster-config.yaml
 ```
 **Warning**: This will permanently delete the resources created above, including the EKS cluster and Application Load Balancer.
-> ⚠️ **Note:** Resources created in this chapter will incur charges on your AWS account. Make sure the cleanup is completed successfully.
+> ⚠️ **Note:** Resources created in this chapter may incur charges on your AWS account. Make sure the cleanup is completed successfully.
 ---
 
 ## Monitoring Stack Setup
@@ -157,7 +157,7 @@ Deploy the [kube-prometheus](https://artifacthub.io/packages/helm/prometheus-com
 helm install monitoring oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack -n monitoring --create-namespace
 ```
 
-Expected output (some information may vary):
+###### Expected output (some information may vary):
 ```shell
 NAME: monitoring
 LAST DEPLOYED: Thu Oct  2 13:00:46 2025
@@ -189,7 +189,8 @@ kubectl --namespace monitoring port-forward $POD_NAME 3000
 ### b. Grafana Access
 
 Authenticate **>** Open the Dashboard section > Select the "Node Exporter / Node dashboard":
-![Node Dashboard](../resources/node-dashboard.png)
+
+![Node Dashboard](resources/node-dashboard.png)
 Your cluster nodes are now monitored and metrics can be visualized in Grafana.
 
 

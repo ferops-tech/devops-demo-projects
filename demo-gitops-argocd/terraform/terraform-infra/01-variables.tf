@@ -30,7 +30,7 @@ variable "key_pair_public_path" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t3.micro"
+  default     = "t3.large"
 }
 
 variable "ami_id" {
@@ -111,5 +111,5 @@ variable "root_volume_delete_on_termination" {
 variable "user_data_script" {
   description = "Bootstrap script for the EC2 instance"
   type        = string
-  default     = "" # Default is empty; provide script via terraform.tfvars (e.g., file("startup.sh"))
+  default     = "" # Default is empty; provide script via terraform.tfvars (e.g., file("startupOLD.sh"))
 }

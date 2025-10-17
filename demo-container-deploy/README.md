@@ -10,8 +10,8 @@ Clone the repository and run the app locally:
 
 ```bash
 git clone https://github.com/ferops-tech/devops-demo-projects.git
-cd devops-demo-projects
-docker build -f docker/Dockerfile -t flask-app .
+cd devops-demo-projects/demo-container-deploy/app
+docker build -t flask-app .
 docker run -ti -p 8080:5000 flask-app
 ```
 
@@ -25,17 +25,17 @@ For the full cloud deployment, see **[Deployment Guide](docs/deployment_guide.md
 
 Highlights:
 
-- Terraform provisions AWS resources: VPC, subnet, internet gateway, security groups, and EC2 instance.
-- EC2 runs the Dockerized Flask app via bootstrap script or manual launch.
-- Monitoring stack (Prometheus + Grafana) visualizes metrics from the Flask app.
+- **Terraform** provisions AWS resources: VPC, subnet, internet gateway, security groups, and EC2 instance.
+- **EC2** runs the Dockerized Flask app via bootstrap script or manual launch.
+- **Monitoring** stack (Prometheus + Grafana) visualizes metrics from the Flask app.
 
 ## Tech Stack
 
-- **Language / Framework:** Python (Flask)
-- **Containerization:** Docker
-- **Cloud / IaC:** AWS, Terraform
-- **Monitoring:** Prometheus, Grafana
-- **Version Control:** Git, GitHub
+- Language / Framework: **Python** (Flask)
+- Containerization:** **Docker**
+- Cloud / IaC: **AWS, Terraform**
+- Monitoring: **Prometheus, Grafana**
+- Version Control: **Git, GitHub**
 
 ## Documentation
 
