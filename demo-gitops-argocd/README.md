@@ -37,7 +37,7 @@ Highlights:
 ## Tech Stack
 
 - Containerization: **Docker, Helm**
-- Cloud / IaC: **AWS, Terraform, k3s**
+- Cloud / IaC: **AWS, Terraform, k3d**
 - Continuous Delivery: **ArgoCD**
 - CI/CD: **GitHub Actions**
 
